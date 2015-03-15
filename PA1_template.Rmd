@@ -4,14 +4,23 @@
 ---
 
 ### **Loading and preprocessing the data**
-```{r Loading and preprocessing the data}
-# Load Libraries ddplyr and ggplot2
+Load Libraries ddplyr and ggplot2.
+
+```{r Load libraries}
 library("plyr")
 library("ggplot2")
+```
+
+Unzip the activity.zip and read the activity.csv file
+```{r Unzip and read.csv}
 # Unzip the activit.zip file
 unzip("activity.zip")
 #Read activity.csv file
 activity <- read.csv("activity.csv", header=T)
+```
+
+The class for Activity$date must be date instead of the current class factor
+```{r Set the calss of date}
 class(activity$date)
 # Class of date is a factor needs to be date.
 activityDate <-transform(activity, date = as.Date(date))
@@ -19,6 +28,7 @@ class(activityDate$date)
 # Class date is Date
 
 ```
+
 
 
 ## **What is mean total number of steps taken per day?**
