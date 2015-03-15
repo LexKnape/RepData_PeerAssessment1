@@ -38,7 +38,6 @@ In order to show the number of steps per day I will show the result of the steps
 p <- ggplot (MstepsPerDay, aes (steps))
 p <- p + geom_histogram(fill = "yellow", color = "black") + theme_bw(base_family = "Verdana")
 p + ggtitle ("Total number of steps per day")
-p + labs(x = "Step per day", y = "Number of times it occured")
 ```
 
 The plot shows missing values and to calculate the mean we must get ride of these
