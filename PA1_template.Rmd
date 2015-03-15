@@ -26,16 +26,26 @@ class(activity$date)
 activityDate <-transform(activity, date = as.Date(date))
 class(activityDate$date)
 # Class date is Date
-
 ```
-
-
 
 ## **What is mean total number of steps taken per day?**
+
+before we can calculate the number of steps per day we must
+set the class for Activity$date to be date instead of the current class factor
+```{r Set the calss of date}
+class(activity$date)
+# Class of date is a factor needs to be date.
+activityDate <-transform(activity, date = as.Date(date))
+class(activityDate$date)
+# Class date is Date
+```
+
+now we can calculate the total number of steps per day.
 ```{r mean total number of steps per day}
-# Load Libraries ddplyr and ggplot2
 stepsPerDay <- ddply(activity, ~date, summarise, steps = sum(steps))
 ```
+
+
 
 
 ## What is the average daily activity pattern?
