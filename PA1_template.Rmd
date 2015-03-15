@@ -73,8 +73,24 @@ Finally we calculate the mean of the total number os steps per day.
 meanstepsPerDayClean <- mean(stepsPerDayClean$steps)
 ```
 
+The mean total number of steps taken per day is 10766.
+
 ## What is the average daily activity pattern?
 
+As the device collects data at 5 minute intervals through out the day we need a plot (time series) 
+of the activity to get a feel. First calculate the steps taken per interval
+
+```{r Average interval per `steps}
+StepsPerIntervalAverage <- ddply ( activity, ~interval, summarise, mean = mean (steps, na.rm=T))
+```
+
+In order to show the average steps per interval I use a time serie plot. 
+```{r Histogram mean tot. steps per day }
+p <- ggplot (MstepsPerDay, aes (steps))
+p <- p + geom_histogram(fill = "yellow", color = "black") + theme_bw(base_family = "Verdana")
+p + ggtitle ("Total number of steps per day")
+p + labs(x = "Step per day", y = "Number of times it occured")
+```
 
 
 ## Imputing missing values
