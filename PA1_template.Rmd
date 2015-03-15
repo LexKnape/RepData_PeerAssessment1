@@ -86,10 +86,8 @@ StepsPerIntervalAverage <- ddply ( activity, ~interval, summarise, mean = mean (
 
 In order to show the average steps per interval I use a time serie plot. 
 ```{r Histogram mean tot. steps per day }
-p <- ggplot (MstepsPerDay, aes (steps))
-p <- p + geom_histogram(fill = "yellow", color = "black") + theme_bw(base_family = "Verdana")
-p + ggtitle ("Total number of steps per day")
-p + labs(x = "Step per day", y = "Number of times it occured")
+p <- ggplot (StepsPerIntervalAverageClean, aes (interval,mean))
+p + geom_line(col= "red") + theme_bw(base_family = "Verdana"))
 ```
 
 
