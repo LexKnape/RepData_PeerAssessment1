@@ -121,8 +121,8 @@ p + xlab("Steps per day")
 
 The mean and median total number of steps taken per dayare calculated 
 ```{r  Plot steps per day histogram}
-meanstepsPerDayClean <- mean(stepsPerDayClean$steps)
-medianstepsPerDayClean <- median(stepsPerDayClean$steps)
+meanstepsPerDayClean <- mean(impute$steps)
+medianstepsPerDayClean <- median(impute$steps)
 ```
 The mean steps per day is 10.766 and are the same as the none imputeed value
 The median is 10.765 and with a difference of 1 it can be neglected
