@@ -1,11 +1,22 @@
 ---
-"Reproducible Research: Peer Assessment 1"
+## "Reproducible Research: Peer Assessment 1"
 
 ---
 
-
-## Loading and preprocessing the data
-
+### **Loading and preprocessing the data**
+```{r Loading and preprocessing the data}
+# Load Libraries ddplyr and ggplot2
+library("plyr")
+library("ggplot2")
+unzip("activity.zip")
+activity <- read.csv("activity.csv", header=T)
+class(activity$date)
+# factor Needs to be date
+activityDate <-transform(activity, date = as.Date(date))
+class(activityDate$date)
+# Date
+stepsPerDay <- ddply(activity, ~date, summarise, steps = sum(steps))
+```
 
 
 ## What is mean total number of steps taken per day?
