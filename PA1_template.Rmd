@@ -1,6 +1,10 @@
 ---
 ## "Reproducible Research: Peer Assessment 1"
-
+---
+title: ""Reproducible Research: Peer Assessment 1""
+author: Lex Knape
+date: March 15, 2015
+output: md_document
 ---
 
 ### **Loading and preprocessing the data**
@@ -10,6 +14,7 @@
 ```{r Load libraries}
 library("plyr")
 library("ggplot2")
+library("knitr")
 ```
 
 Unzip the activity.zip and read the activity.csv file
