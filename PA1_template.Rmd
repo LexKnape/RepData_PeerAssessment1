@@ -130,5 +130,12 @@ In order to make the histogram of total steps I calculate the total number of st
 impute <- ddply(imputeNA, ~date, summarise, steps = sum(steps))
 ```
 
+A histogram of the total number of steps taken each day
+```{r  Plot steps per day histogram}
+p <- ggplot(impute, aes(steps))
+p <- p + geom_histogram(fill = "steelblue", color = "red")
+p <- p + ggtitle (" The total number of steps taken each day")
+p + xlab("Steps per day")
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
