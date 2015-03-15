@@ -53,6 +53,20 @@ p + ggtitle ("Total number of steps per day")
 p + labs(x = "Step per day", y = "Number of times it occured")
 ```
 
+In order to show the number of steps per day I will show the result of the stepsPerDay in a histogram
+```{r Histogram mean tot. steps per day }
+p <- ggplot (MstepsPerDay, aes (steps))
+p <- p + geom_histogram(fill = "yellow", color = "black") + theme_bw(base_family = "Verdana")
+p + ggtitle ("Total number of steps per day")
+p + labs(x = "Step per day", y = "Number of times it occured")
+```
+
+
+Get ride of the missing values in DATA stepsPerDay
+```{r Clean missing values}
+activityStepsClean <- activity[complete.cases(activity[,1]), ]
+```
+
 
 ## What is the average daily activity pattern?
 
