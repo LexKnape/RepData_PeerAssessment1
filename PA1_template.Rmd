@@ -84,7 +84,7 @@ which results in 2.304 missing vales
 I will test the above via an r script.
 ```{r Missing values }
 RowsOfNAs <- is.na(activity$steps)
-summary(RowsOfNA2s)
+summary(RowsOfNAs)
 ```
 The double check shows the summary of NA's TRUE 2.304. The total number of missing values is 2.304
 
