@@ -13,9 +13,7 @@ library("ggplot2")
 
 Unzip the activity.zip and read the activity.csv file
 ```{r Unzip and read.csv}
-# Unzip the activit.zip file
 unzip("activity.zip")
-#Read activity.csv file
 activity <- read.csv("activity.csv", header=T)
 ```
 
@@ -63,6 +61,7 @@ stepsPerDayClean <- ddply(activityStepsClean, ~date, summarise, steps = sum(step
 Finally we calculate the mean of the total number os steps per day without NA.
 ```{r Mean tot steps per Day without missing values}
 meanstepsPerDay <- mean(MstepsPerDay$steps, na.rm=T)
+medianstepsPerDay <- median(MstepsPerDay$steps, na.rm=T)
 ```
 
 The mean total number of steps taken per day is 10766.
@@ -152,3 +151,7 @@ Create a new factor variable in the dataset with two levels ??? weekday and week
 weekParts <- c("Weekday", "Weekend")
 ```
 
+Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). .
+```{r  Create a plot Time Series}
+weekParts <- c("Weekday", "Weekend")
+```
