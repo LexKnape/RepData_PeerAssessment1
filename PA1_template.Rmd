@@ -4,7 +4,7 @@
 ---
 
 ### **Loading and preprocessing the data**
-Load Libraries ddplyr and ggplot2.
+Load Libraries plyr and ggplot2.
 
 ```{r Load libraries}
 library("plyr")
@@ -32,7 +32,7 @@ class(activityDate$date)
 
 before we can calculate the number of steps per day we must
 set the class for Activity$date to be date instead of the current class factor
-```{r Set the calss of date}
+```{r Set the class of date}
 class(activity$date)
 # Class of date is a factor needs to be date.
 activityDate <-transform(activity, date = as.Date(date))
@@ -53,24 +53,16 @@ p + ggtitle ("Total number of steps per day")
 p + labs(x = "Step per day", y = "Number of times it occured")
 ```
 
-In order to show the number of steps per day I will show the result of the stepsPerDay in a histogram
-```{r Histogram mean tot. steps per day }
-p <- ggplot (MstepsPerDay, aes (steps))
-p <- p + geom_histogram(fill = "yellow", color = "black") + theme_bw(base_family = "Verdana")
-p + ggtitle ("Total number of steps per day")
-p + labs(x = "Step per day", y = "Number of times it occured")
-```
 The plot shows missing values and to calculate the mean we must get ride of these
-
 Get ride of the missing values in DATA MstepsPerDay and calculate number of steps
 ```{r Clean missing values}
 activityStepsClean <- activity[complete.cases(activity[,1]), ]
 stepsPerDayClean <- ddply(activityStepsClean, ~date, summarise, steps = sum(steps))
 ```
 
-Finally we calculate the mean of the total number os steps per day.
+Finally we calculate the mean of the total number os steps per day without NA.
 ```{r Mean tot steps per Day without missing values}
-meanstepsPerDayClean <- mean(stepsPerDayClean$steps)
+meanstepsPerDay <- mean(MstepsPerDay$steps, na.rm=T)
 ```
 
 The mean total number of steps taken per day is 10766.
@@ -138,4 +130,23 @@ p <- p + ggtitle (" The total number of steps taken each day")
 p + xlab("Steps per day")
 ```
 
+The mean and median total number of steps taken per dayare calculated 
+```{r  Plot steps per day histogram}
+meanstepsPerDayClean <- mean(stepsPerDayClean$steps)
+medianstepsPerDayClean <- median(stepsPerDayClean$steps)
+```
+The mean steps per day is 10.766 and are the same as the none imputeed value
+The median is 10.765 and with a difference of 1 it can be neglected
+
 ## Are there differences in activity patterns between weekdays and weekends?
+```{r  Plot steps per day histogram}
+p <- ggplot(impute, aes(steps))
+p <- p + geom_histogram(fill = "steelblue", color = "red")
+p <- p + ggtitle (" The total number of steps taken each day")
+p + xlab("Steps per day")
+```
+
+Create a new factor variable in the dataset with two levels ??? weekday and weekend indicating whether a given date is a weekday or weekend day.
+
+
+
