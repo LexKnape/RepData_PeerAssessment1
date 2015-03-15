@@ -128,18 +128,30 @@ The mean steps per day is 10.766 and are the same as the none imputeed value
 The median is 10.765 and with a difference of 1 it can be neglected
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```{r  Plot steps per day histogram}
-p <- ggplot(impute, aes(steps))
-p <- p + geom_histogram(fill = "steelblue", color = "red")
-p <- p + ggtitle (" The total number of steps taken each day")
-p + xlab("Steps per day")
-```
 
 Create a new factor variable in the dataset with two levels ??? weekday and weekend indicating whether a given date is a weekday or weekend day.
 
 ```{r  Create new factor}
 weekParts <- c("Weekday", "Weekend")
+
+date2weekpart <- function(date) {
+        day <- weekdays(date)
+        part <- factor ("Weekday", weekParts)
+        if (day %in% c("Saturday", "Sunday"))
+                part <-factor("Weekend", weekParts)
+        return(part)
+}
+
 ```
+
+Change the class of the imputeNA$date from factor towards Date
+
+```{r  Change class}
+class(imputeNA$date)
+imputeNADate <-transform(imputeNA, date = as.Date(date))
+class(imputeNADate$date)
+```
+
 
 Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). .
 ```{r  Create a plot Time Series}
