@@ -157,7 +157,13 @@ Create a new variable named weekpart
 ```{r  Create variable weekpart}
 imputeNADate$weekpart <- sapply(imputeNADate$date, date2weekpart)
 ```
+
 Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). .
 ```{r  Create a plot Time Series}
-weekParts <- c("Weekday", "Weekend")
+AverageNumberSteps <- ddply(imputeNADate, .(interval, weekpart), summarise, mean = mean(steps))
+
+p <- ggplot(AverageNumberSteps, aes(x=interval, y = mean))
+p <- p + geom_line() + facet_grid(. ~weekpart, ) + theme_bw(base_family = "Verdana")
+p <- p + ggtitle("Activity pattersns on weekends and weekdays")
+p + xlab("Interval")
 ```
