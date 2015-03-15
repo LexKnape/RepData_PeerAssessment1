@@ -107,6 +107,15 @@ summary(RowsOfNA2s)
 ```
 The double check shows the summary of NA's TRUE 2.304. The total number of missing values is 2.304
 
-
+I choose the strategy to fill the missing values in the dataset with the mean for that 5-minute interval. 
+```{r  replace NA with values mean for that 5-minute interval}
+Replace <- function(NAMean) {
+        ddply(NAMean, ~interval, function (dd) {
+                steps <- dd$steps
+                dd$steps[is.na(steps)] <- mean (steps, na.rm =T)
+                return(dd)
+        })
+}
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
