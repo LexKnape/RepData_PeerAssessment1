@@ -6,6 +6,8 @@
 ### **Loading and preprocessing the data**
 Load Libraries plyr and ggplot2.
 
+opts_chunk$set(message=F, fig.width = 6, fig.height = 6)
+
 ```{r Load libraries}
 library("plyr")
 library("ggplot2")
