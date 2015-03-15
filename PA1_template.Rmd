@@ -8,19 +8,24 @@
 # Load Libraries ddplyr and ggplot2
 library("plyr")
 library("ggplot2")
+# Unzip the activit.zip file
 unzip("activity.zip")
+#Read activity.csv file
 activity <- read.csv("activity.csv", header=T)
 class(activity$date)
-# factor Needs to be date
+# Class of date is a factor needs to be date.
 activityDate <-transform(activity, date = as.Date(date))
 class(activityDate$date)
-# Date
-stepsPerDay <- ddply(activity, ~date, summarise, steps = sum(steps))
+# Class date is Date
+
 ```
 
 
-## What is mean total number of steps taken per day?
-
+## **What is mean total number of steps taken per day?**
+```{r mean total number of steps per day}
+# Load Libraries ddplyr and ggplot2
+stepsPerDay <- ddply(activity, ~date, summarise, steps = sum(steps))
+```
 
 
 ## What is the average daily activity pattern?
