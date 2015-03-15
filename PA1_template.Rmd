@@ -62,7 +62,7 @@ As the device collects data at 5 minute intervals through out the day we need a 
 of the activity to get a feel. First calculate the steps taken per interval
 
 ```{r Average interval per `steps}
-StepsPerIntervalAverage <- ddply ( activity, ~interval, summarise, mean = mean (steps, na.rm=T))
+StepsPerIntervalAverage <- ddply (activity, ~interval, summarise, mean = mean (steps, na.rm=T))
 ```
 
 I make a time series plot (<code>i.e. type = "l"</code>) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
