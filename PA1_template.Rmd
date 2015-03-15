@@ -118,4 +118,11 @@ Replace <- function(NAMean) {
 }
 ```
 
+Replace the current dataset activity with the dataset where NA is replaced with the mean for that 
+5-minute interval. 
+```{r  replace datasets}
+imputeNA <- Replace(activity)
+```
+
+
 ## Are there differences in activity patterns between weekdays and weekends?
