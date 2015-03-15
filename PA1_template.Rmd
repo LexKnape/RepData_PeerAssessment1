@@ -60,13 +60,18 @@ p <- p + geom_histogram(fill = "yellow", color = "black") + theme_bw(base_family
 p + ggtitle ("Total number of steps per day")
 p + labs(x = "Step per day", y = "Number of times it occured")
 ```
+The plot shows missing values and to calculate the mean we must get ride of these
 
-
-Get ride of the missing values in DATA stepsPerDay
+Get ride of the missing values in DATA MstepsPerDay and calculate number of steps
 ```{r Clean missing values}
 activityStepsClean <- activity[complete.cases(activity[,1]), ]
+stepsPerDayClean <- ddply(activityStepsClean, ~date, summarise, steps = sum(steps))
 ```
 
+Finally we calculate the mean of the total number os steps per day.
+```{r Mean tot steps per Day without missing values}
+meanstepsPerDayClean <- mean(stepsPerDayClean$steps)
+```
 
 ## What is the average daily activity pattern?
 
